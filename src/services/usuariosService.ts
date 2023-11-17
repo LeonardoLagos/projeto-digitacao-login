@@ -1,10 +1,11 @@
 import { Usuarios } from "src/database/entities/usuarios";
 import { Repository } from "typeorm";
+import { dataSource as db } from "src/database/dataSource";
 
 export class UsuariosService {
     usuariosRepository: Repository<Usuarios>;
 
-    constructor(usuariosRepository) {
+    constructor(usuariosRepository = db.getRepository(Usuarios)) {
         this.usuariosRepository = usuariosRepository;
     }
 
@@ -22,5 +23,20 @@ export class UsuariosService {
             throw new Error('Usuario não encontrado!');
         }
         return itemDb;
+    }
+
+    async cadastroUsuario(nome: string, email: string, senha: string, googleId: string) {
+        const itemDb = await this.usuariosRepository.findOne({where: {email: email, googleId: googleId}});
+
+        if(itemDb){
+            throw new Error('Usuario já cadastrado!');
+        }
+        
+        const usuario = new Usuarios();
+        usuario.nome = nome;
+        usuario.email = email;
+        usuario.senha = senha;
+        await this.usuariosRepository.save(usuario);
+        return usuario;
     }
 }
