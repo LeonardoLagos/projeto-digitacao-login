@@ -29,20 +29,18 @@ export class Usuarios1700230688677 implements MigrationInterface {
                     isNullable: false,
                 },
                 {
-                    name: 'dataCadastro',
+                    name: 'data_cadastro',
                     type: 'timestamp',
                     isNullable: false,
                     default: 'CURRENT_TIMESTAMP',
                 },
                 {
-                    name: 'googleId',
-                    type: 'varchar',
-                    isNullable: true,
+                    name: 'google_id',
+                    type: 'varchar'
                 },
                 {
-                    name: 'fotoPerfil',
-                    type: 'varchar',
-                    isNullable: true,
+                    name: 'foto_perfil',
+                    type: 'varchar'
                 },
             ]
         }))

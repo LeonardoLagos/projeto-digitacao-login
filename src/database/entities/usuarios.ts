@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 
-@Entity('usuarios')
+@Entity("usuarios")
 export class Usuarios {
     @PrimaryGeneratedColumn()
     id: number;
@@ -16,11 +16,11 @@ export class Usuarios {
     senha: string;
 
     @Column()
-    dataCadastro: Date;
+    data_cadastro: Date;
 
     @Column()
-    googleId: string;
+    google_id: string;
 
     @Column()
-    fotoPerfil: string;
+    foto_perfil: string;
 }

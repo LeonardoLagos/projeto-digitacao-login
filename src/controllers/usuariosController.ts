@@ -10,30 +10,26 @@ export class UsuariosController {
 
     loginUsuarios = async (req: Request, res: Response) => {
         try {
-            const { email, senha } = req.body;
-            const usuario = await this.usuariosService.getUsuario(email, senha);
+            const { email, senha, googleId } = req.body;
+            const usuario = await this.usuariosService.loginUsuario(email, senha, googleId);
 
-            if (usuario instanceof Error) {
-                return res.status(400).json({ message: usuario.message });
-            }
-            res.status(200).json(usuario);
+            res.status(200).json({ id: usuario.id, nome: usuario.nome, email: usuario.email, fotoPerfil: usuario.foto_perfil });
         } catch (error) {
-            res.status(400).json({ message: 'Erro no login!' });
+            res.status(400).json({ message: error.message });
         }
     }
 
     cadastroUsuarios = async (req: Request, res: Response) => {
         try {
-            const { nome, email, senha, googleId } = req.body;
-            const usuario = await this.usuariosService.cadastroUsuario(nome, email, senha, googleId);
+            const { nome, email, senha, google_id, foto_perfil } = req.body;
+            const usuario = await this.usuariosService.cadastroUsuario(nome, email, senha, google_id, foto_perfil);
 
-            console.log(nome, email, senha, googleId)
             if (usuario instanceof Error) {
                 return res.status(400).json({ message: usuario.message });
             }
             res.status(200).json(usuario);
         } catch (error) {
-            res.status(400).json({ message: error.message, a: 'ash' });
+            res.status(400).json({ message: error.message});
         }
     }
 }
