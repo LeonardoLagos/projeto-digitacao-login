@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { UsuariosService } from 'src/services/usuariosService';
+import { UsuariosService } from '../services/usuariosService';
 
 export class UsuariosController {
     usuariosService: UsuariosService;
@@ -27,12 +27,13 @@ export class UsuariosController {
             const { nome, email, senha, googleId } = req.body;
             const usuario = await this.usuariosService.cadastroUsuario(nome, email, senha, googleId);
 
+            console.log(nome, email, senha, googleId)
             if (usuario instanceof Error) {
                 return res.status(400).json({ message: usuario.message });
             }
             res.status(200).json(usuario);
         } catch (error) {
-            res.status(400).json({ message: 'Erro no cadastro!' });
+            res.status(400).json({ message: error.message, a: 'ash' });
         }
     }
 }

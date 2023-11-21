@@ -1,6 +1,6 @@
-import { Usuarios } from "src/database/entities/usuarios";
+import { Usuarios } from "../database/entities/usuarios";
 import { Repository } from "typeorm";
-import { dataSource as db } from "src/database/dataSource";
+import { dataSource as db } from "../database/dataSource";
 
 export class UsuariosService {
     usuariosRepository: Repository<Usuarios>;

@@ -12,5 +12,4 @@ export const dataSource = new DataSource({
     entities: ['src/database/entities/*.ts'],
     migrations: ['src/database/migrations/*.ts'],
     migrationsTableName: '_migrations',
-
 })
