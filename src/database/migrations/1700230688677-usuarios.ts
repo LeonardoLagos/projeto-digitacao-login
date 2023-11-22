@@ -9,9 +9,8 @@ export class Usuarios1700230688677 implements MigrationInterface {
             columns: [
                 {
                     name: 'id',
-                    type: 'int',
+                    type: 'uuid',
                     isPrimary: true,
-                    isGenerated: true,
                 },
                 {
                     name: 'nome',
@@ -42,6 +41,10 @@ export class Usuarios1700230688677 implements MigrationInterface {
                     name: 'foto_perfil',
                     type: 'varchar'
                 },
+                {
+                    name: 'status',
+                    type: 'varchar'
+                }
             ]
         }))
     }

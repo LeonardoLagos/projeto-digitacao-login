@@ -13,7 +13,18 @@ export class UsuariosController {
             const { email, senha, googleId } = req.body;
             const usuario = await this.usuariosService.loginUsuario(email, senha, googleId);
 
-            res.status(200).json({ id: usuario.id, nome: usuario.nome, email: usuario.email, fotoPerfil: usuario.foto_perfil });
+            res.status(200).json(usuario);
+        } catch (error) {
+            res.status(400).json({ message: error.message });
+        }
+    }
+
+    buscaUsuarioPorToken = async (req: Request, res: Response) => {
+        try {
+            const { token } = req.body;
+            const usuario = await this.usuariosService.buscaUsuarioPorToken(token);
+
+            res.status(200).json(usuario);
         } catch (error) {
             res.status(400).json({ message: error.message });
         }
