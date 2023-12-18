@@ -34,4 +34,5 @@ jobs:
 
     - name: Install Dependencies
       run: |
+        pwd
         npm install
