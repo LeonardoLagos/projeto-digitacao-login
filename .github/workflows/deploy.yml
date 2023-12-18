@@ -36,7 +36,6 @@ jobs:
       uses: webfactory/ssh-agent@v0.8.0
       with:
         ssh-private-key: ${{secrets.EC2_SSH_KEY}}
-        ssh-known-hosts: ${{secrets.REMOTE_HOST}}
 
     - name: Conecta com a VW e instala as dependências
       run: >
