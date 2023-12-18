@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   deploy:
-    name: Deploy to EC2
+    name: Deploy no EC2
     runs-on: ubuntu-latest
 
     steps:
@@ -21,11 +21,24 @@ jobs:
         REMOTE_HOST: ${{secrets.REMOTE_HOST}}
         REMOTE_USER: ${{secrets.REMOTE_USER}}
         
-        TARGET: ${{secrets.TARGET_INSTALL}}
+        TARGET: ${{secrets.TARGET}}
         EXCLUDE: "/dist/, /node_modules/, **.env"
-        
+
+  build:
+    name: Build app
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+
     - name: Install Dependencies
       run: |
         npm install
-      working-directory: ${{secrets.TARGET_INSTALL}}
+      working-directory: ${{secrets.TARGET}}
       
