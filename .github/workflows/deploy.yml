@@ -35,5 +35,5 @@ jobs:
     - name: Install Dependencies
       run: |
         npm install
-      working-directory: './home/ubuntu/projeto-digitacao-login'
+      working-directory: '/home/ubuntu/projeto-digitacao-login'
       
