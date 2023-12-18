@@ -24,5 +24,8 @@ jobs:
         TARGET: ${{secrets.TARGET}}
         EXCLUDE: "/dist/, /node_modules/, **.env"
         
-    - name: Install dependencies
-      run: npm install
+    - name: Install Dependencies
+      run: |
+        npm install
+      working-directory: ${{secrets.TARGET}}
+      
