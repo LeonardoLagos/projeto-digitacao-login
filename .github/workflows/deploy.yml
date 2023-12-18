@@ -21,11 +21,11 @@ jobs:
         REMOTE_HOST: ${{secrets.REMOTE_HOST}}
         REMOTE_USER: ${{secrets.REMOTE_USER}}
         
-        TARGET: ${{secrets.TARGET}}
+        TARGET: ${{secrets.TARGET_INSTALL}}
         EXCLUDE: "/dist/, /node_modules/, **.env"
         
     - name: Install Dependencies
       run: |
         npm install
-      working-directory: ${{secrets.TARGET}}
+      working-directory: '../'
       
