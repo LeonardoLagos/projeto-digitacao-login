@@ -24,8 +24,8 @@ jobs:
         TARGET: ${{secrets.TARGET}}
         EXCLUDE: "/dist/, /node_modules/, **.env"
 
-  install-dependencies:
-    name: install Dependencies
+  instalar-dependencias:
+    name: instalar Dependencias
     runs-on: ubuntu-latest
 
     steps:
@@ -36,11 +36,6 @@ jobs:
       uses: webfactory/ssh-agent@v0.8.0
       with:
         ssh-private-key: ${{secrets.EC2_SSH_KEY}}
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20.10.0'
 
     - name: Conecta com a VW e instala as dependências
       run: >
