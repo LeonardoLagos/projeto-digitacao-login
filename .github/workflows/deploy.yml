@@ -37,6 +37,11 @@ jobs:
       with:
         ssh-private-key: ${{secrets.EC2_SSH_KEY}}
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20.10.0'
+
     - name: Conecta com a VW e instala as dependências
       run: >
         ssh -o StrictHostKeyChecking=no ${{secrets.REMOTE_USER}}@${{secrets.REMOTE_HOST}} "cd ${{secrets.TARGET}} && npm install"
